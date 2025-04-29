@@ -19,29 +19,28 @@
 
 .c-chart__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end;
   height: 250px;
-  padding-bottom: 70px;
   position: relative;
   margin-top: var(--spacing-lg);
+  overflow: hidden;
 }
 
 .c-chart__bar-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  margin: 0 15px;
   position: relative;
   width: 70px;
+  height: 100%;
 }
 
 .c-chart__bar {
-  position: relative;
   width: 100%;
   background: linear-gradient(to top, var(--color-primary) 0%, var(--color-secondary) 100%);
   border-radius: 0;
-  text-align: center;
 }
 
 .c-chart__value-box {
@@ -58,13 +57,19 @@
   margin-bottom: -10px;
 }
 
+.c-chart__labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
 .c-chart__label {
-  margin-top: 15px;
   text-align: center;
   font-size: var(--font-size-sm);
   color: var(--color-text-dark);
   font-weight: var(--font-weight-medium);
-  width: 100%;
+  width: 70px;
   line-height: 1.3;
 }
 
@@ -75,13 +80,11 @@
 
   .c-chart__container {
     height: 200px;
-    padding-bottom: 60px;
     margin-top: var(--spacing-md);
   }
 
   .c-chart__bar-wrapper {
     width: 45px;
-    margin: 0 5px;
   }
 
   .c-chart__value-box {
@@ -89,8 +92,12 @@
     padding: 5px 0;
   }
 
+  .c-chart__labels {
+    margin-top: 15px;
+  }
+
   .c-chart__label {
     font-size: var(--font-size-xs);
-    margin-top: 10px;
+    width: 45px;
   }
 }
