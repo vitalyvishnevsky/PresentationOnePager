@@ -1,0 +1,45 @@
+/* Components: Solution
+ * Solution section styles
+ */
+
+.c-solution {
+  background: var(--color-bg-mint);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.c-solution__title {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xxxl);
+}
+
+.c-solution__subtitle {
+  color: var(--color-success);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.c-solution__note {
+  font-style: italic;
+  color: var(--color-text-subtitle);
+  margin-top: calc(var(--spacing-sm) * -1);
+  margin-bottom: var(--spacing-lg);
+}
+
+.c-solution__highlight {
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  margin-top: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .c-solution {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .c-solution__subtitle {
+    font-size: var(--font-size-base);
+  }
+}
