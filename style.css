@@ -16,15 +16,18 @@ body {
     color: var(--text-dark);
     overflow-x: hidden;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .container {
     width: 100%;
-    max-width: 1200px; 
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 40px;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 header.hero {
@@ -79,12 +82,13 @@ header.hero .subtitle {
 
 section {
     background: #fff;
-    margin: 28px 0;
+    margin: 0 0 40px 0;
     border-radius: 24px;
     box-shadow: 0 2px 16px rgba(35,41,70,0.04);
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    width: 100%;
 }
 
 section.visible {
@@ -147,23 +151,32 @@ p {
 /* Problem Section */
 .problem {
     background: #f8e5e8;
-    padding: 80px 0; 
     text-align: center; /* Center inline content like h2 */
-    /* Removed width: 100%; Rely on default block behavior */
     box-sizing: border-box;
-    margin: 0; /* Override generic section margin */
+    margin: 0;
+    padding: 60px 0;
+    border-radius: 0;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 .problem h2 {
     color: var(--purple-primary);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
 }
 
 .problem-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
-    width: 100%; 
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 /* Align text within problem items to the left for readability */
@@ -196,26 +209,41 @@ p {
 
 @media (max-width: 768px) {
     .problem-grid {
-        grid-template-columns: 1fr; 
-        max-width: 500px; 
+        grid-template-columns: 1fr;
+        max-width: 500px;
         margin-left: auto; /* Center the grid itself when single column */
         margin-right: auto;
+    }
+
+    .problem {
+        padding: 40px 0;
+    }
+
+    .solution {
+        padding: 40px 0;
     }
 }
 
 /* Solution Section - Ensure text-align center */
 .solution {
     background: #e4f7f1;
-    padding: 80px 0; 
     text-align: center; /* Center inline content like h2, subtitle */
-    /* Removed width: 100%; Rely on default block behavior */
     box-sizing: border-box;
-    margin: 0; /* Override generic section margin */
+    margin: 0;
+    padding: 60px 0;
+    border-radius: 0;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 .solution h2 {
     color: var(--purple-primary);
     margin-bottom: 16px;
+    font-size: 2.2rem;
 }
 
 .solution .subtitle {
@@ -225,22 +253,34 @@ p {
 }
 
 .data-extraction {
-    margin-bottom: 40px;
+    margin: 40px auto;
     width: 100%;
+    max-width: 900px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(123,104,238,0.08);
+    position: relative;
+    z-index: 1;
 }
 
 .data-extraction h3 {
-     font-size: 1.2rem;
+     font-size: 1.3rem;
      margin-bottom: 24px;
      color: var(--text-dark);
+     font-weight: 600;
 }
 
 .data-visual {
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
-     gap: 12px;
-     margin: 24px 0;
+     gap: 16px;
+     margin: 30px 0;
+     max-width: 900px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 100%;
 }
 
 .highlight {
@@ -254,10 +294,13 @@ p {
     display: flex;
     gap: 24px;
     justify-content: center;
-    margin-top: 32px;
-    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Align text within feature cards to the center (as it was before) */
@@ -266,8 +309,8 @@ p {
     border-radius: 16px;
     padding: 24px;
     text-align: center; /* Keep text inside card centered */
-    flex: 1 1 300px; 
-    max-width: 380px; 
+    flex: 1 1 300px;
+    max-width: 380px;
     box-shadow: 0 4px 16px rgba(123,104,238,0.1);
     box-sizing: border-box;
 }
@@ -291,17 +334,56 @@ p {
 
 /* --- Responsive Adjustments --- */
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     .container {
-        padding: 0 20px; 
+        padding: 0 20px;
     }
-    .problem,
-    .solution {
-        padding: 60px 0;
-    }
+
     .feature {
-        flex-basis: 100%; 
+        flex-basis: 100%;
         max-width: 100%;
+    }
+
+    /* Improve data points display on mobile */
+    .data-visual {
+        gap: 8px;
+    }
+
+    .data-point, .data-point-highlight {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        margin: 4px;
+    }
+
+    /* Adjust section spacing */
+    section {
+        margin: 20px 0;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    section h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Improve header responsiveness */
+    header.hero h1 {
+        font-size: 2.8rem;
+    }
+
+    header.hero h2 {
+        font-size: 1.5rem;
+    }
+
+    header.hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-btn {
+        padding: 12px 30px;
+        font-size: 1.1rem;
     }
 }
 
@@ -522,13 +604,13 @@ p {
     .market-circles {
         flex-direction: column;
     }
-    
+
     .market-connector {
         height: 80px;
         width: 3px;
         margin: 15px 0;
     }
-    
+
     .market-connector:after {
         right: 50%;
         top: auto;
@@ -539,28 +621,28 @@ p {
         border-top: 10px solid var(--text-dark);
         border-bottom: none;
     }
-    
+
     .market-twist {
         grid-template-columns: 1fr;
     }
-    
+
     .market-badges {
         padding: 0 20px;
     }
-    
+
     .market-divider {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 50px;
     }
-    
+
     .arrow {
         position: relative;
         width: 60px;
         height: 30px;
     }
-    
+
     .arrow-line {
         position: absolute;
         top: 50%;
@@ -570,7 +652,7 @@ p {
         background: var(--text-dark);
         transform: translateY(-50%);
     }
-    
+
     .arrow-head {
         position: absolute;
         top: 50%;
@@ -584,26 +666,42 @@ p {
 }
 
 /* Competitive Section */
+.competitive {
+    background: var(--light-mint);
+}
+
+.competitive p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
 .competitive-table {
     overflow-x: auto;
-    margin: 24px 0;
+    margin: 30px 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(123,104,238,0.1);
+    background: #fff;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 th, td {
-    padding: 12px 16px;
+    padding: 16px;
     text-align: left;
     border-bottom: 1px solid #eee;
+    word-wrap: break-word;
 }
 
 th {
     background: #f8f9ff;
     color: var(--purple-primary);
     font-weight: 600;
+    position: sticky;
+    top: 0;
 }
 
 tr:hover {
@@ -614,12 +712,55 @@ td strong {
     color: var(--pink-primary);
 }
 
+@media (max-width: 768px) {
+    .competitive-table {
+        margin: 20px -20px;
+        border-radius: 0;
+        width: calc(100% + 40px);
+    }
+
+    th, td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+.data-point {
+    padding: 10px 16px;
+    border-radius: 20px;
+    margin: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(123,104,238,0.1);
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.data-point:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(123,104,238,0.15);
+}
+
 .data-point-highlight {
     font-weight: 600; /* Bolder text */
     color: var(--purple-primary); /* Use primary color */
-    border: 1px solid var(--purple-primary); /* Add a border */
-    background-color: #e6f7ff; /* Light blue background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 2px solid var(--purple-primary); /* Add a border */
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 12px rgba(123,104,238,0.2); /* Enhanced shadow */
+    padding: 12px 20px;
+    border-radius: 20px;
+    margin: 8px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+}
+
+.data-point-highlight:hover {
+    transform: translateY(-5px);
+    background-color: rgba(123,104,238,0.08);
+    box-shadow: 0 6px 16px rgba(123,104,238,0.25);
 }
 
 .competitive-table table {
@@ -1097,20 +1238,20 @@ footer {
     .market-twist {
         grid-template-columns: 1fr;
     }
-    
+
     .market-divider {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 50px;
     }
-    
+
     .arrow {
         position: relative;
         width: 60px;
         height: 30px;
     }
-    
+
     .arrow-line {
         position: absolute;
         top: 50%;
@@ -1120,7 +1261,7 @@ footer {
         background: var(--text-dark);
         transform: translateY(-50%);
     }
-    
+
     .arrow-head {
         position: absolute;
         top: 50%;
@@ -1150,16 +1291,16 @@ footer {
     .market-twist {
         grid-template-columns: 1fr;
     }
-    
+
     .market-left, .market-right {
         padding: 16px;
     }
-    
+
     .market-badge {
         font-size: 0.9rem;
         padding: 6px 12px;
     }
-    
+
     .gtm-phases {
         flex-direction: column;
     }
@@ -1188,7 +1329,7 @@ footer {
     th, td {
         padding: 8px;
     }
-    
+
     .insight-themes {
         grid-template-columns: 1fr;
     }
