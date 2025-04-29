@@ -21,6 +21,7 @@
 /* 5. Components - UI components */
 @import 'components/header.css';
 @import 'components/problem.css';
+@import 'components/screenshots.css';
 @import 'components/solution.css';
 @import 'components/data-points.css';
 @import 'components/features.css';
